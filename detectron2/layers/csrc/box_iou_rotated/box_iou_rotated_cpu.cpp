@@ -23,7 +23,7 @@ void box_iou_rotated_cpu_kernel(
   for (int i = 0; i < num_boxes1; i++) {
     for (int j = 0; j < num_boxes2; j++) {
       ious[i * num_boxes2 + j] = single_box_iou_rotated<T>(
-          boxes1[i].data_ptr<T>(), boxes2[j].data_ptr<T>());
+          boxes1[i].data<T>(), boxes2[j].data<T>());
     }
   }
 }

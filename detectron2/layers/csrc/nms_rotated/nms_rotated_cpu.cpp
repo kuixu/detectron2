@@ -28,9 +28,9 @@ at::Tensor nms_rotated_cpu_kernel(
   at::Tensor suppressed_t = at::zeros({ndets}, dets.options().dtype(at::kByte));
   at::Tensor keep_t = at::zeros({ndets}, dets.options().dtype(at::kLong));
 
-  auto suppressed = suppressed_t.data_ptr<uint8_t>();
-  auto keep = keep_t.data_ptr<int64_t>();
-  auto order = order_t.data_ptr<int64_t>();
+  auto suppressed = suppressed_t.data<uint8_t>();
+  auto keep = keep_t.data<int64_t>();
+  auto order = order_t.data<int64_t>();
 
   int64_t num_to_keep = 0;
 
@@ -49,7 +49,7 @@ at::Tensor nms_rotated_cpu_kernel(
       }
 
       auto ovr = single_box_iou_rotated<scalar_t>(
-          dets[i].data_ptr<scalar_t>(), dets[j].data_ptr<scalar_t>());
+          dets[i].data<scalar_t>(), dets[j].data<scalar_t>());
       if (ovr >= iou_threshold) {
         suppressed[j] = 1;
       }

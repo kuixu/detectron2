@@ -88,9 +88,9 @@ at::Tensor box_iou_rotated_cuda(
     box_iou_rotated_cuda_kernel<scalar_t><<<blocks, threads, 0, stream>>>(
         num_boxes1,
         num_boxes2,
-        boxes1.data_ptr<scalar_t>(),
-        boxes2.data_ptr<scalar_t>(),
-        (scalar_t*)ious.data_ptr<scalar_t>());
+        boxes1.data<scalar_t>(),
+        boxes2.data<scalar_t>(),
+        (scalar_t*)ious.data<scalar_t>());
 
     AT_CUDA_CHECK(cudaGetLastError());
   }

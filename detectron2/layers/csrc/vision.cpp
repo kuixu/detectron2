@@ -2,7 +2,7 @@
 #include "ROIAlign/ROIAlign.h"
 #include "ROIAlignRotated/ROIAlignRotated.h"
 #include "box_iou_rotated/box_iou_rotated.h"
-#include "deformable/deform_conv.h"
+// #include "deformable/deform_conv.h"
 #include "nms_rotated/nms_rotated.h"
 
 namespace detectron2 {
@@ -35,23 +35,23 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
 
   m.def("box_iou_rotated", &box_iou_rotated, "IoU for rotated boxes");
 
-  m.def("deform_conv_forward", &deform_conv_forward, "deform_conv_forward");
-  m.def(
-      "deform_conv_backward_input",
-      &deform_conv_backward_input,
-      "deform_conv_backward_input");
-  m.def(
-      "deform_conv_backward_filter",
-      &deform_conv_backward_filter,
-      "deform_conv_backward_filter");
-  m.def(
-      "modulated_deform_conv_forward",
-      &modulated_deform_conv_forward,
-      "modulated_deform_conv_forward");
-  m.def(
-      "modulated_deform_conv_backward",
-      &modulated_deform_conv_backward,
-      "modulated_deform_conv_backward");
+  // m.def("deform_conv_forward", &deform_conv_forward, "deform_conv_forward");
+  // m.def(
+  //     "deform_conv_backward_input",
+  //     &deform_conv_backward_input,
+  //     "deform_conv_backward_input");
+  // m.def(
+  //     "deform_conv_backward_filter",
+  //     &deform_conv_backward_filter,
+  //     "deform_conv_backward_filter");
+  // m.def(
+  //     "modulated_deform_conv_forward",
+  //     &modulated_deform_conv_forward,
+  //     "modulated_deform_conv_forward");
+  // m.def(
+  //     "modulated_deform_conv_backward",
+  //     &modulated_deform_conv_backward,
+  //     "modulated_deform_conv_backward");
 
   m.def("nms_rotated", &nms_rotated, "NMS for rotated boxes");
 
